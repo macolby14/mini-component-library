@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
   border-radius: 8px;
   padding: var(--padding);
+  overflow: hidden;
 `;
 
 
@@ -19,10 +20,7 @@ const Fill = styled.div`
   background-color: ${COLORS.primary};
   width: ${props => props.value}%;
   height: 100%;
-  border-radius: ${({value}) => {
-    const interpolate = 4*Math.max((value-99),0); 
-    return `4px ${interpolate}px ${interpolate}px 4px`; 
-  }};
+  border-radius: 4px 0 0 4px;
 `;
 
 const sizeStyles = {
