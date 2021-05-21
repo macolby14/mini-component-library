@@ -8,7 +8,7 @@ import VisuallyHidden from '../VisuallyHidden';
 const Wrapper = styled.div`
   background-color: ${COLORS.transparentGray15};
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
-  border-radius: 8px;
+  border-radius: var(--radius);
   padding: var(--padding);
   overflow: hidden;
 `;
@@ -26,9 +26,9 @@ const Fill = styled.div`
 `;
 
 const sizeStyles = {
-  small: {'--height': '8px', '--padding': 0},
-  medium: {'--height': '12px', '--padding': 0},
-  large: {'--height': '24px', '--padding': '4px'},
+  small: {'--height': '8px', '--padding': 0, '--radius': '4px'},
+  medium: {'--height': '12px', '--padding': 0, '--radius': '4px'},
+  large: {'--height': '24px', '--padding': '4px', '--radius': '8px'},
 };
 
 const ProgressBar = ({ value, size }) => {
