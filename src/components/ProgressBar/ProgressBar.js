@@ -34,7 +34,7 @@ const sizeStyles = {
 const ProgressBar = ({ value, size }) => {
   value = Math.max(Math.min(100,value),0);
 
-  return <Wrapper aria-valuemax="100" aria-valuemin="0" aria-valuenow={value} style={sizeStyles[size]}>
+  return <Wrapper role="progressbar" aria-valuemax="100" aria-valuemin="0" aria-valuenow={value} style={sizeStyles[size]}>
     <Fill value={value} />
     <VisuallyHidden>{value}%</VisuallyHidden>
     </Wrapper>;
