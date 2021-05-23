@@ -35,7 +35,7 @@ const Presentation = styled.div`
   }
 
   ${NativeSelect}:hover + & {
-    color: ${COLORS.black};
+    color: ${COLORS.black}
   }
 `;
 
