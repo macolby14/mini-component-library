@@ -8,9 +8,10 @@ import VisuallyHidden from '../VisuallyHidden';
 
 
 const StyledInput = styled.input`
+  height: var(--height);
   border: none;
-  border-bottom: 2px solid ${COLORS.black};
-  padding-left: 32px;
+  border-bottom: var(--border-thickness) solid ${COLORS.black};
+  padding-left: var(--height);
   font-size: var(--text-size);
   font-weight: 700;
   width: ${props=>props.width}px;
@@ -25,11 +26,12 @@ const StyledInput = styled.input`
 `;
 
 
-const Wrapper = styled.div`
+const Wrapper = styled.label`
+  display: block;
   position: relative;
   color: ${COLORS.gray700};
 
-  ${StyledInput}:hover{
+  &:hover{
     color:${COLORS.black};
   }
 `;
@@ -37,14 +39,32 @@ const Wrapper = styled.div`
 const IconWrapper = styled.div`
   position: absolute;
   top: 0;
+  bottom: 0;
+  height: var(--icon-size);
+  margin: auto 0;
   left: 0;
-  pointer-events: none;
   color: inherit;
 `;
 
 const sizeStyles = {
-  small: {'--text-size': `${14/16}rem`},
-  large: {'--text-size': `${18/16}rem`},
+  small: {
+    '--text-size': `${14/16}rem`,
+    '--border-thickness': '1px',
+    '--icon-size': '16px',
+    '--height': ` ${24 / 16}rem`
+
+  },
+  large: {
+    '--text-size': `${18/16}rem`,
+    '--border-thickness': '2px',
+    '--icon-size': '24px',
+    '--height': ` ${36 / 16}rem`
+  },
+}
+
+const iconSize = {
+  small: '16',
+  large: '24'
 }
 
 const IconInput = ({
@@ -52,14 +72,14 @@ const IconInput = ({
   icon,
   width = 250,
   size,
-  placeholder,
+  ...delegated
 }) => {
   return (
-  <Wrapper>
-    <VisuallyHidden><label for={label}>{label}</label></VisuallyHidden>
-   <StyledInput style={sizeStyles[size]} name={label} width={width} placeholder={placeholder} />
+  <Wrapper style={sizeStyles[size]} >
+    <VisuallyHidden>{label}</VisuallyHidden>
+   <StyledInput name={label} width={width} {...delegated} />
    <IconWrapper>
-     <Icon id={icon} size={16}/>
+     <Icon id={icon} size={iconSize[size]}/>
    </IconWrapper>
   </Wrapper>
 );
